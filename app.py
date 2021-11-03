@@ -6,7 +6,7 @@ import json
 # app settings
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '67cbe9e9-bdde-48f1-bf95-d0938e76713e'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:A5x67!qw@localhost/bible?charset=utf8mb4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:<password>@localhost/bible?charset=utf8mb4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 db = SQLAlchemy(app)
