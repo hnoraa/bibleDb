@@ -1,0 +1,39 @@
+
+.form-inline {
+    display    : flex;
+    align-items: center;
+}
+
+.form-inline label {
+    margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+    vertical-align  : middle;
+    margin          : 5px 10px 5px 0;
+    padding         : 10px;
+    background-color: #ffffff;
+    border          : 1px solid #ddd;
+}
+
+.form-inline button {
+    padding         : 10px 20px;
+    background-color: #898989;
+    border          : 1px solid #ddd;
+    color           : #ffffff;
+}
+
+.form-inline button:hover {
+    background-color: #666666;
+}
+
+@media (max-width: 800px) {
+    .form-inline input {
+        margin: 10px 0;
+    }
+
+    .form-inline {
+        flex-direction: column;
+        align-items   : stretch;
+    }
+}

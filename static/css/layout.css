@@ -1,0 +1,33 @@
+
+.header {
+    background-color: #898989;
+    padding         : 10px;
+    text-align      : left;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+}
+
+.footer {
+    background-color: #898989;
+    padding         : 10px;
+    text-align      : left;
+    position        : fixed;
+    left            : 0;
+    bottom          : 0;
+    width           : 100%;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 100%;
+     }
+}

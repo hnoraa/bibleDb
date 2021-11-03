@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <h3>{{data.name}}</h3>
+        </div>
+        <div class="row">
+            <div class="container">
+                {% for d in data.books: %}
+                <div class="row">
+                    <form class="form-inline" action="{{ url_for('volume', id=data.id) }}" method="POST">
+                        <input type="hidden" name="id" value="{{ d.id }}">
+                        <input type="hidden" name="verb" value="delete">
+                        <input type="submit" value="X" />
+                    </form>
+                   
+                    <span>{{d.number}}: {{d.name}} (<a href="{{ url_for('book', id=d.id) }}">{{d.chapters|length}}
+                            chapters</a>)</span>
+                    <form class="form-inline" action="{{ url_for('volume', id=data.id) }}" method="POST">
+                        <input type="hidden" name="id" value="{{ d.id }}">
+                        <input type="hidden" name="verb" value="update">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" value="{{d.name}}" name="name">
+                        <label for="number">Number:</label>
+                        <input type="number" id="number" value="{{d.number}}" name="number">
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <h3>Add New Book to {{data.name}}</h3>
+        </div>
+        <div class="row">
+            <form class="form-inline" action="{{ url_for('volume', id=data.id) }}" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter name" name="name" required>
+                <label for="number">Number:</label>
+                <input type="number" id="number" placeholder="Enter number" name="number" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

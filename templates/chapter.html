@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <h3>{{book.name}} Chapter {{data.name}}</h3>
+        </div>
+        <div class="row">
+            <div class="container">
+                {% for d in data.verses: %}
+                <div class="row">
+                    <form class="form-inline" action="{{ url_for('chapter', id=data.id) }}" method="POST">
+                        <input type="hidden" name="id" value="{{ d.id }}">
+                        <input type="hidden" name="verb" value="delete">
+                        <input type="submit" value="X" />
+                    </form>
+
+                    <span>{{data.number}}:{{d.number}} {{d.title}} {{d.text}}</span>
+                    <form class="form-inline" action="{{ url_for('chapter', id=data.id) }}" method="POST">
+                        <input type="hidden" name="id" value="{{ d.id }}">
+                        <input type="hidden" name="verb" value="update">
+                        <label for="text">Text:</label>
+                        <input type="text" id="text" value="{{d.text}}" name="text">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" value="{{d.title}}" name="title">
+                        <label for="number">Number:</label>
+                        <input type="number" id="number" value="{{d.number}}" name="number">
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <h3>Add New Verse to {{book.name}} Chapter {{data.name}}</h3>
+        </div>
+        <div class="row">
+            <form class="form-inline" action="{{ url_for('chapter', id=data.id) }}" method="POST">
+                <label for="text">Text:</label>
+                <input type="text" id="text" placeholder="Enter text"  name="text" required>
+                <label for="title">Title:</label>
+                <input type="text" id="title" placeholder="Enter title"  name="title">
+                <label for="number">Number:</label>
+                <input type="number" id="number" placeholder="Enter number" name="number" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
